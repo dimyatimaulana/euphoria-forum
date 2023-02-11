@@ -1,0 +1,47 @@
+.detail-thread {
+    margin-bottom: 20px;
+}
+
+.created-detail {
+    margin: 0;
+}
+
+.header-detail-page, .owner {
+    display: flex;
+}
+
+.header-detail-page a {
+    display: flex;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+}
+
+.header-detail-page a svg {
+    width: 30px;
+    height: 30px;
+}
+
+.owner-category, .owner-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.body-thread, .item-comment {
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.length-button {
+    display: flex;
+}
+
+.comment-input {
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    margin: 20px;
+}

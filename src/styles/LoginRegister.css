@@ -1,0 +1,81 @@
+.login-page, .register-page {
+    width: 100vw;
+    height: 100vh;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.login-page-container, .register-page-container{
+    width: 40vw;
+    margin: auto;
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.form-login, .form-register {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+/* INPUT */
+
+.inputAuth {
+    font-family: monospace;
+    outline: none;
+    border: 1px solid #dadada;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f3f7fe;
+    transition: .3s;
+    color: #3b82f6;
+  }
+  
+  .inputAuth::placeholder {
+    color: #3b82f6;
+  }
+  
+  .inputAuth:focus {
+    border: 1px solid #3b82f6;
+    box-shadow: 0 0 0 5px #3b83f65f
+  }
+
+  /* button */
+
+  button {
+    position: relative;
+    background-color: #3b82f6;
+    border-radius: 5px;
+    box-shadow: #3b83f65f;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    transition: all .3s ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  button::before {
+    content: "";
+    background-color: #285bac;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: width 700ms ease-in-out;
+    display: inline-block;
+  }
+  
+  button:hover::before {
+    width: 100%;
+  }

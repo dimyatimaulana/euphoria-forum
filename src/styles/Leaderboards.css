@@ -1,0 +1,14 @@
+.leaderboard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.owner {
+    display: flex;
+    align-items: center;
+}
+
+.owner p {
+    padding-left: 20px;
+    margin-right: 20px;
+}

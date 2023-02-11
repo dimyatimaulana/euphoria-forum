@@ -1,0 +1,26 @@
+a {
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+nav h1 {
+    margin: 0;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: flex;
+    list-style: none;
+    padding: 5px;
+    align-items: center;
+}
+
+#signout-btn {
+    margin-top: 10px;
+}
+
+img {
+    max-width: 44px;
+    max-height: 44px;
+    padding-right: 10px;
+}

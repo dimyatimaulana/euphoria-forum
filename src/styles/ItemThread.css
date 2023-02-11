@@ -1,0 +1,48 @@
+.item-thread {
+    border-bottom : 1px solid black;
+    padding: 10px;
+}
+
+.item-thread p {
+    max-height: 100px;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.categoryItemThread {
+    margin-top: 10px;
+    width: fit-content;
+    padding: 10px;
+    border: 1px solid #3b82f6;
+    backdrop-filter: blur(6px);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    user-select: none;
+}
+ 
+.categoryItemThread:hover {
+    transform: scale(1.05);
+}
+
+.reactions {
+    display: flex;
+    gap: 10px;
+}
+
+.reaction-icon {
+    max-width: 44px;
+    max-height: 44px;
+    background-color: white;
+    color: black;
+}
+
+.reaction-icon::before {
+    background-color: white;
+}
+
+.created {
+    display: flex;
+    justify-content: space-between;
+}
