@@ -15,8 +15,6 @@ function DetailPage() {
     authUser,
   } = useSelector((states) => states);
 
-  console.log(threadDetail);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,31 +43,7 @@ function DetailPage() {
       <ThreadComment onCreateComment={onCreateComment} />
       {
         threadDetail.comments.map((comment) => (
-          <Comments {...comment} authUser={authUser.id} threadId={id} />
-          // <div className="item-comment">
-          //   <div className="owner-date">
-          //     <div className="owner">
-          //       <img src={comment.owner.avatar} alt="comment-owner" />
-          //       <p>{comment.owner.name}</p>
-          //     </div>
-          //     <div className="created">
-          //       <p>
-          //         {showFormattedDate(comment.createdAt)}
-          //       </p>
-          //     </div>
-          //   </div>
-          //   <p>{comment.content}</p>
-          //   <div className="reactions">
-          //     <button className="reaction-icon" type="button" onClick={onLikeClick} onKeyDown={onLikeThread}>
-          //       { isThreadLiked ? <AiFillLike style={{ color: '#3b82f6' }} /> : <AiOutlineLike />}
-          //       {comment.upVotesBy.length}
-          //     </button>
-          //     <button className="reaction-icon" type="button" onClick={onDislikeClick} onKeyDown={onDislikeThread}>
-          //       { isThreadDisliked ? <AiFillDislike style={{ color: 'black' }} /> : <AiOutlineDislike />}
-          //       {comment.downVotesBy.length}
-          //     </button>
-          //   </div>
-          // </div>
+          <Comments key={comment.id} {...comment} authUser={authUser.id} threadId={id} />
         ))
       }
     </section>
