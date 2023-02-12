@@ -155,9 +155,9 @@ const api = (() => {
       throw new Error(message);
     }
 
-    const { data: { talk } } = responseJson;
+    const { data: { thread } } = responseJson;
 
-    return talk;
+    return thread;
   }
 
   async function toggleLikeThread(id) {
