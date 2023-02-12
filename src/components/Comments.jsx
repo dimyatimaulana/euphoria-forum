@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike,
 } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
 import { asyncDownvoteComment, asyncUpvoteComment } from '../states/comment/action';
 
 function Comments({
@@ -12,9 +13,15 @@ function Comments({
   const isThreadLiked = upVotesBy.includes(authUser);
   const isThreadDisliked = downVotesBy.includes(authUser);
 
+  const idThread = threadId;
+  const idComment = id;
+
+  const dispatch = useDispatch();
+
   const onLikeClick = (event) => {
     event.stopPropagation();
-    asyncUpvoteComment(threadId, id);
+    // disini masih terbaca id masing2 tapi ketika dikirim ke api nilainya jadi undefined
+    dispatch(asyncUpvoteComment(idThread, idComment));
   };
 
   const onLikeComment = (event) => {
@@ -25,7 +32,7 @@ function Comments({
 
   const onDislikeClick = (event) => {
     event.stopPropagation();
-    asyncDownvoteComment(threadId, id);
+    dispatch(asyncDownvoteComment(threadId, id));
   };
 
   const onDislikeComment = (event) => {
