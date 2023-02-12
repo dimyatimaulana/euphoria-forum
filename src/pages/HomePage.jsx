@@ -41,31 +41,35 @@ function HomePage() {
   }));
 
   // block di bawah buat nyari category yang suah difilter berdasarkan value di atas
-  // eslint-disable-next-line no-unused-vars
-  let filteredThreads = [];
 
-  useEffect(() => {
-    filteredThreads = threadsList.filter(
-      (thread) => thread.category.toLowerCase().includes(
-        selectedCategory.toLocaleLowerCase(),
-      ),
-    );
-  }, [selectedCategory]);
-  // end block
+  const categories = threads.map((thread) => (thread.category));
 
-  const categories = threads.map((thread) => (
-    thread.category
-  ));
+  // eslint-disable-next-line max-len
+  const filteredCategories = categories.reduce((result, element) => (result.includes(element) ? result : [...result, element]), []);
 
-  // ketika filteredThreads saya pass ke component Category, belum jalan sesuai ekspektasi
+  const filteredThreads = threadsList.filter(
+    (thread) => thread.category.toLowerCase().includes(
+      selectedCategory.toLocaleLowerCase(),
+    ),
+  );
+
+  // const onFilteredThreads = () => {
+  //   if (selectedCategory === null) {
+  //     return threadsList;
+  //   }
+  //   return filteredThreads;
+  // };
 
   return (
     <div className="flex">
       <div className="flex-3">
         <ThreadInput createThread={createThread} />
-        <ListThreads threads={threadsList} like={onUpVote} dislike={onDownVote} />
+        <ListThreads threads={filteredThreads} like={onUpVote} dislike={onDownVote} />
       </div>
-      <Category categories={categories} selectedCategory={setSelectedCategory} />
+      <Category
+        categories={filteredCategories}
+        selectedCategory={setSelectedCategory}
+      />
     </div>
   );
 }
