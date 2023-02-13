@@ -160,26 +160,6 @@ const api = (() => {
     return thread;
   }
 
-  async function toggleLikeThread(id) {
-    const response = await _fetchWithAuth(`${BASE_URL}/talks/likes`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        talkId: id,
-      }),
-    });
-
-    const responseJson = await response.json();
-
-    const { status, message } = responseJson;
-
-    if (status !== 'success') {
-      throw new Error(message);
-    }
-  }
-
   async function createComment({ threadId, content }) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments`, {
       method: 'POST',
@@ -257,7 +237,7 @@ const api = (() => {
     }
   }
 
-  async function upvoteComment({ threadId, commentId }) {
+  async function upvoteComment(threadId, commentId) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`, {
       method: 'POST',
       headers: {
@@ -274,7 +254,7 @@ const api = (() => {
     }
   }
 
-  async function downvoteComment({ threadId, commentId }) {
+  async function downvoteComment(threadId, commentId) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`, {
       method: 'POST',
       headers: {
@@ -333,7 +313,6 @@ const api = (() => {
     getAllUsers,
     getAllThreads,
     createThread,
-    toggleLikeThread,
     getThreadDetail,
     createComment,
     upvoteThread,

@@ -6,7 +6,7 @@ function commentReducer(comments = [], action = {}) {
       return action.payload.comment;
     case ActionType.TOGGLE_LIKE_COMMENT:
       return comments.map((comment) => {
-        if (comment.id === action.payload.threadId) {
+        if (comment.id === action.payload.commentId) {
           return {
             ...comment,
             upVotesBy: comment.upVotesBy.includes(action.payload.commentId)
@@ -17,7 +17,7 @@ function commentReducer(comments = [], action = {}) {
       });
     case ActionType.TOGGLE_DISLIKE_COMMENT:
       return comments.map((comment) => {
-        if (comment.id === action.payload.threadId) {
+        if (comment.id === action.payload.commentId) {
           return {
             ...comment,
             downVotesBy: comment.downVotesBy.includes(action.payload.commentId)
