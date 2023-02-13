@@ -20,7 +20,7 @@ function HomePage() {
 
   useEffect(() => {
     dispatch(asyncPopulateUsersAndThreads());
-  }, dispatch);
+  }, [dispatch]);
 
   const createThread = ({ title, body, category }) => {
     dispatch(asyncAddThread({ title, body, category }));
