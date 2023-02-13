@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -31,6 +30,7 @@ function DetailPage() {
 
   const onCreateComment = (content) => {
     dispatch(asyncCreateComment({ threadId: id, content }));
+    dispatch(asyncReceiveThreadDetail(id));
   };
 
   if (!threadDetail) {
@@ -39,7 +39,12 @@ function DetailPage() {
 
   return (
     <section>
-      <ThreadDetail {...threadDetail} authUser={authUser.id} like={onLikeThread} dislike={onDisikeThread} />
+      <ThreadDetail
+        {...threadDetail}
+        authUser={authUser.id}
+        like={onLikeThread}
+        dislike={onDisikeThread}
+      />
       <ThreadComment onCreateComment={onCreateComment} />
       {
         threadDetail.comments.map((comment) => (
