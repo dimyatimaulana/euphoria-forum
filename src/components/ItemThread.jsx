@@ -27,7 +27,9 @@ function ItemThread({
 
   const onLikeClick = (event) => {
     event.stopPropagation();
-    like(id);
+    if (!isThreadDisliked) {
+      like(id);
+    }
   };
 
   const onLikeThread = (event) => {
@@ -38,7 +40,9 @@ function ItemThread({
 
   const onDislikeClick = (event) => {
     event.stopPropagation();
-    dislike(id);
+    if (!isThreadLiked) {
+      dislike(id);
+    }
   };
 
   const onDislikeThread = (event) => {
