@@ -14,6 +14,8 @@ function DetailPage() {
     authUser,
   } = useSelector((states) => states);
 
+  console.log(threadDetail);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +32,6 @@ function DetailPage() {
 
   const onCreateComment = (content) => {
     dispatch(asyncCreateComment({ threadId: id, content }));
-    dispatch(asyncReceiveThreadDetail(id));
   };
 
   if (!threadDetail) {

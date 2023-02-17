@@ -20,6 +20,36 @@ function threadDetailReducer(threadDetail = null, action = {}) {
           ? threadDetail.downVotesBy.filter((id) => id !== action.payload.userId)
           : threadDetail.downVotesBy.concat(action.payload.userId),
       };
+    case ActionType.CREATE_COMMENT:
+      return {
+        ...threadDetail,
+        comments: [
+          action.payload.comment,
+          ...threadDetail.comments,
+        ],
+      };
+    case ActionType.TOGGLE_LIKE_COMMENT:
+      return threadDetail.comments.map((comment) => {
+        if (comment.id === action.payload.commentId) {
+          return {
+            ...comment,
+            upVotesBy: comment.upVotesBy.includes(action.payload.commentId)
+              ? comment.upVotesBy.filter((id) => id !== action.payload.commentId)
+              : comment.upVotesBy.concat([action.payload.commentId]),
+          };
+        } return threadDetail;
+      });
+    case ActionType.TOGGLE_DISLIKE_COMMENT:
+      return threadDetail.comments.map((comment) => {
+        if (comment.id === action.payload.commentId) {
+          return {
+            ...comment,
+            downVotesBy: comment.downVotesBy.includes(action.payload.commentId)
+              ? comment.downVotesBy.filter((id) => id !== action.payload.commentId)
+              : comment.downVotesBy.concat([action.payload.commentId]),
+          };
+        } return threadDetail;
+      });
     default:
       return threadDetail;
   }
