@@ -98,22 +98,22 @@ function createCommentActionCreator(comment) {
   };
 }
 
-function toggleUpvoteActionCreator({ threadId, commentId }) {
+function toggleUpvoteActionCreator({ commentId, userId }) {
   return {
     type: ActionType.TOGGLE_LIKE_COMMENT,
     payload: {
-      threadId,
       commentId,
+      userId,
     },
   };
 }
 
-function toggleDownvoteActionCreator({ threadId, commentId }) {
+function toggleDownvoteActionCreator({ commentId, userId }) {
   return {
     type: ActionType.TOGGLE_DISLIKE_COMMENT,
     payload: {
-      threadId,
       commentId,
+      userId,
     },
   };
 }
@@ -132,28 +132,30 @@ function asyncCreateComment({ threadId, content }) {
 }
 
 function asyncUpvoteComment(threadId, commentId) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(showLoading());
-    dispatch(toggleUpvoteActionCreator({ threadId, commentId }));
+    const { authUser } = getState();
+    dispatch(toggleUpvoteActionCreator({ commentId, userId: authUser.id }));
     try {
       await api.upvoteComment(threadId, commentId);
     } catch (error) {
       alert(error.message);
-      dispatch(toggleUpvoteActionCreator({ threadId, commentId }));
+      dispatch(toggleUpvoteActionCreator({ commentId, userId: authUser.id }));
     }
     dispatch(hideLoading());
   };
 }
 
 function asyncDownvoteComment(threadId, commentId) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(showLoading());
-    dispatch(toggleUpvoteActionCreator({ threadId, commentId }));
+    const { authUser } = getState();
+    dispatch(toggleUpvoteActionCreator({ commentId, userId: authUser.id }));
     try {
       await api.downvoteComment(threadId, commentId);
     } catch (error) {
       alert(error.message);
-      dispatch(toggleUpvoteActionCreator({ threadId, commentId }));
+      dispatch(toggleUpvoteActionCreator({ commentId, userId: authUser.id }));
     }
     dispatch(hideLoading());
   };

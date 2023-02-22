@@ -33,22 +33,24 @@ function threadDetailReducer(threadDetail = null, action = {}) {
         if (comment.id === action.payload.commentId) {
           return {
             ...comment,
-            upVotesBy: comment.upVotesBy.includes(action.payload.commentId)
-              ? comment.upVotesBy.filter((id) => id !== action.payload.commentId)
-              : comment.upVotesBy.concat([action.payload.commentId]),
+            upVotesBy: comment.upVotesBy.includes(action.payload.userId)
+              ? comment.upVotesBy.filter((id) => id !== action.payload.userId)
+              : comment.upVotesBy.concat([action.payload.userId]),
           };
-        } return threadDetail;
+        }
+        return comment;
       });
     case ActionType.TOGGLE_DISLIKE_COMMENT:
       return threadDetail.comments.map((comment) => {
         if (comment.id === action.payload.commentId) {
           return {
             ...comment,
-            downVotesBy: comment.downVotesBy.includes(action.payload.commentId)
-              ? comment.downVotesBy.filter((id) => id !== action.payload.commentId)
-              : comment.downVotesBy.concat([action.payload.commentId]),
+            downVotesBy: comment.downVotesBy.includes(action.payload.userId)
+              ? comment.downVotesBy.filter((id) => id !== action.payload.userId)
+              : comment.downVotesBy.concat([action.payload.userId]),
           };
-        } return threadDetail;
+        }
+        return comment;
       });
     default:
       return threadDetail;
