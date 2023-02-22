@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Container from '../components/styled/Container';
 import ThreadDetail from '../components/ThreadDetail';
 import ThreadComment from '../components/ThreadComment';
 import Comments from '../components/Comments';
@@ -13,8 +14,6 @@ function DetailPage() {
     threadDetail = null,
     authUser,
   } = useSelector((states) => states);
-
-  console.log(threadDetail);
 
   const dispatch = useDispatch();
 
@@ -38,8 +37,13 @@ function DetailPage() {
     return null;
   }
 
+  if (threadDetail.comments === undefined) {
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  }
+
   return (
-    <section>
+    <Container maxWidth="90%" padding="0">
       <ThreadDetail
         {...threadDetail}
         authUser={authUser.id}
@@ -52,7 +56,7 @@ function DetailPage() {
           <Comments key={comment.id} {...comment} authUser={authUser.id} threadId={id} />
         ))
       }
-    </section>
+    </Container>
   );
 }
 

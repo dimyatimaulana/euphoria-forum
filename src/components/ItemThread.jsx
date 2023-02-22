@@ -5,6 +5,7 @@ import {
   AiOutlineLike, AiOutlineDislike, AiFillLike, AiFillDislike,
 } from 'react-icons/ai';
 import { FaComments } from 'react-icons/fa';
+import Container from './styled/Container';
 import '../styles/ItemThread.css';
 
 function ItemThread({
@@ -66,7 +67,7 @@ function ItemThread({
   }
 
   return (
-    <div className="item-thread">
+    <Container className="item-thread">
       <div role="button" tabIndex={0} onKeyDown={onThreadPress} onClick={onThreadClick}>
         <div className="categoryItemThread">{category}</div>
         <h2>{title}</h2>
@@ -96,7 +97,7 @@ function ItemThread({
           {user.name}
         </p>
       </div>
-    </div>
+    </Container>
   );
 }
 

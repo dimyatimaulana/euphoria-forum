@@ -66,7 +66,7 @@ function ThreadDetail({
           </p>
         </div>
       </div>
-      <div className="body-thread">
+      <div>
         <div className="categoryItemThread">{category}</div>
         <h2>{title}</h2>
         <p>{body}</p>

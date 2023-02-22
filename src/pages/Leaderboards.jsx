@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { IoMdArrowRoundBack } from 'react-icons/io';
+import Container from '../components/styled/Container';
 import ItemLeaderboards from '../components/ItemLeaderboards';
 import { asyncReceiveLeaderboards } from '../states/leaderboards/action';
 
@@ -16,7 +17,7 @@ function Leaderboards() {
   }, [dispatch]);
 
   return (
-    <div className="leaderboards-list">
+    <Container>
       <div className="header-detail-page">
         <Link to="/"><IoMdArrowRoundBack /></Link>
         <h2>Leaderboards</h2>
@@ -26,7 +27,7 @@ function Leaderboards() {
           <ItemLeaderboards key={leaderboard.user.id} {...leaderboard} index={leaderboards.indexOf(leaderboard)} />
         ))
       }
-    </div>
+    </Container>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Container from '../components/styled/Container';
 import ThreadInput from '../components/ThreadInput';
 import ListThreads from '../components/ListThreads';
 import Category from '../components/Category';
@@ -61,7 +62,7 @@ function HomePage() {
   // };
 
   return (
-    <div className="flex">
+    <Container className="flex">
       <div className="flex-3">
         <ThreadInput createThread={createThread} />
         <ListThreads threads={filteredThreads} like={onUpVote} dislike={onDownVote} />
@@ -70,7 +71,7 @@ function HomePage() {
         categories={filteredCategories}
         selectedCategory={setSelectedCategory}
       />
-    </div>
+    </Container>
   );
 }
 
