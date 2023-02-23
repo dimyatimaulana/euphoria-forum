@@ -30,7 +30,9 @@ describe('Login spec', () => {
   });
 
   it('should display alert when email not valid', (done) => {
-    cy.get('input[placeholder="email"]').type('not valid email');
+    cy.get('input[placeholder="email"]').type('not a valid email');
+
+    cy.get('button').contains(/^Login$/).click();
 
     cy.on('window:alert', (str) => {
       expect(str).to.equal('"email" must be a valid email');
@@ -39,7 +41,7 @@ describe('Login spec', () => {
   });
 
   it('should display alert when password is empty', (done) => {
-    cy.get('input[placeholder="email"]').type('testLogin');
+    cy.get('input[placeholder="email"]').type('alan@dicoding.com');
 
     cy.get('button').contains(/^Login$/).click();
 

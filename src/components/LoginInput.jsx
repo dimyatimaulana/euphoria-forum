@@ -8,7 +8,7 @@ function LoginInput({ login }) {
 
   return (
     <form className="form-login">
-      <input placeholder="email" className="inputAuth" name="text" type="text" value={email} onChange={onEmailChange} />
+      <input placeholder="email" className="inputAuth" name="text" type="email" value={email} onChange={onEmailChange} />
       <input placeholder="password" className="inputAuth" name="text" type="password" value={password} onChange={onPasswordChange} />
       <button type="button" onClick={() => login({ email, password })}>Login</button>
     </form>
