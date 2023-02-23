@@ -10,7 +10,7 @@ export default function Category({ categories, selectedCategory }) {
       {
         categoriesArray.map((category) => (
           <div className="category-item" key={category}>
-            <button className="categoryItemThread" type="button" onClick={() => selectedCategory(category)}>{category}</button>
+            <button placeholder="setCategory" className="categoryItemThread" type="button" onClick={() => selectedCategory(category)}>{category}</button>
           </div>
         ))
       }
